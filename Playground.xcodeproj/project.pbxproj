@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		98DB48612AFBF8EC00C978ED /* PlanetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DB48602AFBF8EC00C978ED /* PlanetModel.swift */; };
+		98DB48632AFBF94200C978ED /* StarWarsAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DB48622AFBF94200C978ED /* StarWarsAPIManager.swift */; };
+		98DB48702AFC007200C978ED /* planet3.png in Resources */ = {isa = PBXBuildFile; fileRef = 98DB486C2AFC007200C978ED /* planet3.png */; };
+		98DB48712AFC007200C978ED /* planet4.png in Resources */ = {isa = PBXBuildFile; fileRef = 98DB486D2AFC007200C978ED /* planet4.png */; };
+		98DB48722AFC007200C978ED /* planet1.png in Resources */ = {isa = PBXBuildFile; fileRef = 98DB486E2AFC007200C978ED /* planet1.png */; };
+		98DB48732AFC007200C978ED /* planet2.png in Resources */ = {isa = PBXBuildFile; fileRef = 98DB486F2AFC007200C978ED /* planet2.png */; };
 		98ED4A842AF597AA00FF4170 /* PlaygroundApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98ED4A832AF597AA00FF4170 /* PlaygroundApp.swift */; };
 		98ED4A862AF597AA00FF4170 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98ED4A852AF597AA00FF4170 /* ContentView.swift */; };
 		98ED4A882AF597AB00FF4170 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98ED4A872AF597AB00FF4170 /* Assets.xcassets */; };
@@ -32,6 +38,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		98DB48602AFBF8EC00C978ED /* PlanetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetModel.swift; sourceTree = "<group>"; };
+		98DB48622AFBF94200C978ED /* StarWarsAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsAPIManager.swift; sourceTree = "<group>"; };
+		98DB486C2AFC007200C978ED /* planet3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = planet3.png; path = ../../../Downloads/planet3.png; sourceTree = "<group>"; };
+		98DB486D2AFC007200C978ED /* planet4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = planet4.png; path = ../../../Downloads/planet4.png; sourceTree = "<group>"; };
+		98DB486E2AFC007200C978ED /* planet1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = planet1.png; path = ../../../Downloads/planet1.png; sourceTree = "<group>"; };
+		98DB486F2AFC007200C978ED /* planet2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = planet2.png; path = ../../../Downloads/planet2.png; sourceTree = "<group>"; };
+		98DB48742AFC007600C978ED /* planet3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = planet3.png; sourceTree = "<group>"; };
+		98DB48752AFC007600C978ED /* planet4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = planet4.png; sourceTree = "<group>"; };
+		98DB48762AFC007600C978ED /* planet2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = planet2.png; sourceTree = "<group>"; };
+		98DB48772AFC007700C978ED /* planet1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = planet1.png; sourceTree = "<group>"; };
 		98ED4A802AF597AA00FF4170 /* Playground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Playground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98ED4A832AF597AA00FF4170 /* PlaygroundApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundApp.swift; sourceTree = "<group>"; };
 		98ED4A852AF597AA00FF4170 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -70,6 +86,10 @@
 		98ED4A772AF597AA00FF4170 = {
 			isa = PBXGroup;
 			children = (
+				98DB486E2AFC007200C978ED /* planet1.png */,
+				98DB486F2AFC007200C978ED /* planet2.png */,
+				98DB486C2AFC007200C978ED /* planet3.png */,
+				98DB486D2AFC007200C978ED /* planet4.png */,
 				98ED4A822AF597AA00FF4170 /* Playground */,
 				98ED4A812AF597AA00FF4170 /* Products */,
 			);
@@ -92,6 +112,10 @@
 				98ED4A832AF597AA00FF4170 /* PlaygroundApp.swift */,
 				98ED4A852AF597AA00FF4170 /* ContentView.swift */,
 				98ED4A872AF597AB00FF4170 /* Assets.xcassets */,
+				98DB48772AFC007700C978ED /* planet1.png */,
+				98DB48762AFC007600C978ED /* planet2.png */,
+				98DB48742AFC007600C978ED /* planet3.png */,
+				98DB48752AFC007600C978ED /* planet4.png */,
 				98ED4A892AF597AB00FF4170 /* Preview Content */,
 			);
 			path = Playground;
@@ -109,6 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				98FF656D2AFAC81700A2AB8D /* CustomPagingSlider.swift */,
+				98DB48602AFBF8EC00C978ED /* PlanetModel.swift */,
+				98DB48622AFBF94200C978ED /* StarWarsAPIManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -218,7 +244,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				98ED4A8B2AF597AB00FF4170 /* Preview Assets.xcassets in Resources */,
+				98DB48722AFC007200C978ED /* planet1.png in Resources */,
+				98DB48732AFC007200C978ED /* planet2.png in Resources */,
 				98ED4A882AF597AB00FF4170 /* Assets.xcassets in Resources */,
+				98DB48712AFC007200C978ED /* planet4.png in Resources */,
+				98DB48702AFC007200C978ED /* planet3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,8 +274,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				98ED4A862AF597AA00FF4170 /* ContentView.swift in Sources */,
+				98DB48612AFBF8EC00C978ED /* PlanetModel.swift in Sources */,
 				98FF656E2AFAC81700A2AB8D /* CustomPagingSlider.swift in Sources */,
 				98ED4A842AF597AA00FF4170 /* PlaygroundApp.swift in Sources */,
+				98DB48632AFBF94200C978ED /* StarWarsAPIManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
