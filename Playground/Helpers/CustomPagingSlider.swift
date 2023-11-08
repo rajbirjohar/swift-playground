@@ -7,15 +7,8 @@
 
 import SwiftUI
 
-/// Paging Slider Data Model
-struct Item: Identifiable {
-    private(set) var id: UUID = .init()
-    var color: Color
-    var title: String
-    var subTitle: String
-}
 
-struct CustomPagingSlider<Content: View, TitleContent: View, Item:RandomAccessCollection>: View where Item: MutableCollection, Item.Element: Identifiable {
+struct CustomPagingSlider<Content: View, TitleContent: View, DataItem: Identifiable, DataCollection: RandomAccessCollection>: View where DataCollection.Element == DataItem {
     
     /// Customization Properties
     var showIndicator:ScrollIndicatorVisibility = .hidden
@@ -25,19 +18,19 @@ struct CustomPagingSlider<Content: View, TitleContent: View, Item:RandomAccessCo
     var pagingControlSpacing: CGFloat = 20
     var spacing: CGFloat = 10
     
-    @Binding var data: Item
-    @ViewBuilder var content: (Binding<Item.Element>) -> Content
-    @ViewBuilder var titleContent: (Binding<Item.Element>) -> TitleContent
+    @Binding var data: DataCollection
+    @ViewBuilder var content: (DataItem) -> Content
+    @ViewBuilder var titleContent: (DataItem) -> TitleContent
     
     /// View Properties
-    @State private var activeID: UUID?
+    @State private var activeID: DataItem.ID?
     
     var body: some View {
         VStack(spacing: pagingControlSpacing) {
             ScrollView(.horizontal) {
                 HStack(spacing: spacing) {
-                    ForEach($data) {
-                        item in VStack(spacing: 0) {
+                    ForEach(data, id: \.id) { item in
+                        VStack(spacing: 0) {
                             titleContent(item)
                                 .frame(maxWidth: .infinity)
                                 .visualEffect { content, geometryProxy in
@@ -52,33 +45,22 @@ struct CustomPagingSlider<Content: View, TitleContent: View, Item:RandomAccessCo
                 /// Adding Paging
                 .scrollTargetLayout()
             }
-            .scrollIndicators(showIndicator)
             .scrollTargetBehavior(.viewAligned)
             .scrollPosition(id: $activeID)
+            .scrollIndicators(showIndicator)
             
-            if showPagingControl {
-                PagingControl(numberOfPages: data.count, activePage: activePage) { value in
-                    /// Updating to current page
-                    if let index = value as? Item.Index, data.indices.contains(index) {
-                        if let id = data[index].id as? UUID {
-                            withAnimation(.default) {
-                                activeID = id
-                            }
-                        }
-                    }
-                }
-                .disabled(disablePagingInteraction)
-            }
+            
         }
     }
     
     var activePage: Int {
-        if let index = data.firstIndex(where: {$0.id as? UUID == activeID}) as? Int {
-            return index
+        guard let activeID = activeID,
+              let index = data.firstIndex(where: { $0.id == activeID }) else {
+            return 0
         }
-        return 0
+        return data.distance(from: data.startIndex, to: index)
     }
-    
+
     func scrollOffset(_ proxy: GeometryProxy) -> CGFloat {
         let minX = proxy.bounds(of: .scrollView)?.minX ?? 0
         

@@ -8,30 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    /// View Properties
-    @State private var items: [Item] = [
-        .init(
-            color: .red,
-            title: "Explore Tattoine",
-            subTitle: "View the time in multiple cities around the world."
-        ),
-        .init(
-            color: .blue,
-            title: "Explore Dagobah",
-            subTitle: "Add a clock for a city to check the time at that location."
-        ),
-        .init(
-            color: .green,
-            title: "Explore Naboo",
-            subTitle: "Add a clock for a city to check the time at that location."
-        ),
-        .init(
-            color: .yellow,
-            title: "Explore Coruscant",
-            subTitle: "Dusplay upcoming alarms."
-        )
-    ]
-    
     /// Customization Properties
     @State private var showPagingControl: Bool = true
     @State private var disablePagingInteraction: Bool = false
@@ -77,35 +53,28 @@ struct ContentView: View {
         NavigationView {
             ScrollView {
                 VStack {
-                    CustomPagingSlider(
-                        showPagingControl: showPagingControl,
-                        disablePagingInteraction: disablePagingInteraction,
-                        titleScrollSpeed: titleScrollSpeed,
-                        pagingControlSpacing: pagingSpacing,
-                        data: $items
-                    ) { $item in
+                    let firstFivePlanets = Array(planets.prefix(5))
+                    
+                    CustomPagingSlider(data: .constant(firstFivePlanets)) {planet in
                         Image(.planet1)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                        // You can remove the explicit width to allow the padding to control the size
                             .frame(height: 200)
                             .cornerRadius(10)
-                        // Apply horizontal padding to make the image take a percentage of the width.
-                        // For example, applying padding of 10% of the screen width on each side makes the image take 80% of the width.
                             .padding(.horizontal, UIScreen.main.bounds.width * 0.01)
-                    } titleContent: {$item in
-                        /// Title View
+                    } titleContent: {planet in
                         VStack(spacing: 5) {
-                            Text(item.title)
+                            Text(planet.name)
                                 .font(.title2.bold())
-                            Text(item.subTitle)
+                            Text("Come visit the planet of \(planet.name) where the population is \(planet.population) with a gravity of \(planet.gravity).")
                                 .foregroundStyle(.gray)
                                 .multilineTextAlignment(.center)
-                                .frame(height: 45)
+                                .frame(height: 72)
                         }
                         .padding(.bottom, 35)
                     }
                     .safeAreaPadding([.horizontal, .vertical], 35)
+                    /// List of all planets
                     LazyVStack {
                         ForEach(planets, id: \.name) { planet in
                             VStack(alignment: .leading, spacing: 0.5) {
@@ -113,7 +82,7 @@ struct ContentView: View {
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 Text("Population: \(planet.population)").font(.subheadline)
                                     .frame(maxWidth: .infinity, alignment: .leading)
-                                Text("Population: \(planet.terrain)").font(.subheadline)
+                                Text("Terrain: \(planet.terrain)").font(.subheadline)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                             }
                             .frame(maxWidth: .infinity)
