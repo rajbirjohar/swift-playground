@@ -8,7 +8,7 @@
 import Foundation
 
 // Define the model for the planet
-struct Planet: Codable {
+struct Planet: Identifiable, Codable {
     let url: String
 
     // Here we use the URL string as the unique identifier
@@ -18,6 +18,7 @@ struct Planet: Codable {
     let climate: String
     let gravity: String
     let population: String
+    let terrain: String
     
     // Implement the Equatable protocol if needed
     static func == (lhs: Planet, rhs: Planet) -> Bool {
