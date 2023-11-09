@@ -48,8 +48,6 @@ struct CustomPagingSlider<Content: View, TitleContent: View, DataItem: Identifia
             .scrollTargetBehavior(.viewAligned)
             .scrollPosition(id: $activeID)
             .scrollIndicators(showIndicator)
-            
-            
         }
     }
     
@@ -60,7 +58,7 @@ struct CustomPagingSlider<Content: View, TitleContent: View, DataItem: Identifia
         }
         return data.distance(from: data.startIndex, to: index)
     }
-
+    
     func scrollOffset(_ proxy: GeometryProxy) -> CGFloat {
         let minX = proxy.bounds(of: .scrollView)?.minX ?? 0
         
