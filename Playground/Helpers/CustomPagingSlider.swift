@@ -108,5 +108,5 @@ struct PagingControl: UIViewRepresentable {
 }
 
 #Preview {
-    ContentView()
+    PlanetsView()
 }

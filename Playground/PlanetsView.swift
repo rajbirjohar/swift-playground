@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct PlanetsView: View {
     /// Customization Properties
     @State private var showPagingControl: Bool = true
     @State private var disablePagingInteraction: Bool = false
@@ -50,7 +50,6 @@ struct ContentView: View {
     
     
     var body: some View {
-        NavigationView {
             ScrollView {
                 VStack {
                     let firstFivePlanets = Array(planets.prefix(5))
@@ -124,9 +123,8 @@ struct ContentView: View {
                 Text($errorMessage.wrappedValue ?? "")
             }
         }
-    }
 }
 
 #Preview {
-    ContentView().preferredColorScheme(.dark)
+    PlanetsView()
 }
