@@ -31,7 +31,7 @@ class StarWarsAPIManager {
     }
     
     func fetchStarships(page: Int) async throws -> [Starship] {
-        let urlString = baseUrl + "/planets/?page=\(page)"
+        let urlString = baseUrl + "/starships/?page=\(page)"
         guard let url = URL(string: urlString) else {
             throw URLError(.badURL)
         }

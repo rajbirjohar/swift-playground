@@ -7,14 +7,7 @@
 
 import SwiftUI
 
-struct PlanetsView: View {
-    /// Customization Properties
-    @State private var showPagingControl: Bool = true
-    @State private var disablePagingInteraction: Bool = false
-    @State private var pagingSpacing: CGFloat = 20
-    @State private var titleScrollSpeed: CGFloat = 0.6
-    @State private var stretchContent: Bool = true
-    
+struct PlanetsView: View {    
     @State var planets: [Planet] = []
     @State var isLoading = false
     @State var errorMessage: String?

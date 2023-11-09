@@ -14,6 +14,26 @@ struct DirectoryEntry<Destination: View>: Identifiable {
     let destinationView: () -> Destination
 }
 
+struct DirectoryCardView<Destination: View>: View {
+    let title: String
+    let destination: Destination
+    
+    var body: some View {
+        NavigationLink(destination: destination) {
+            VStack (alignment: .leading) {
+                Text(title)
+                    .font(.headline)
+                    .foregroundColor(Color.white)
+                // Add more details or styling here
+            }
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(Color(UIColor.systemPink))
+            .cornerRadius(12)
+        }
+    }
+}
+
 // Update the HomeView to make it searchable
 struct HomeView: View {
     let directories: [DirectoryEntry<AnyView>] = [
@@ -34,18 +54,21 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView {
-            List(filteredDirectories) { directory in
-                NavigationLink(destination: directory.destinationView()) {
-                    Text(directory.title)
+            ScrollView {
+                LazyVStack(spacing: 10) {
+                    ForEach(filteredDirectories) { directory in
+                        DirectoryCardView(title: directory.title, destination: directory.destinationView())
+                    }
                 }
+                .padding()
             }
-            .navigationTitle("Explore the Galaxy")
-            .searchable(text: $searchText) // Add searchable modifier
+            .navigationTitle("Star Wars Directory")
+            .searchable(text: $searchText, prompt: "Search directories") // Add the searchable modifier
         }
     }
 }
 
 // Define previews and sample directory entries
 #Preview {
-    HomeView()
+    HomeView().preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/).accentColor(Color(UIColor.systemPink))
 }
